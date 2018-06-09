@@ -22,7 +22,7 @@ function! s:todo()
     exec 'vimgrep! /\C\V\<TODO\>' . l:name . '/ **'
 
     " TODO: Make this optional.
-    copen
+    cwindow
 endfunction
 
 command! TODO call s:todo()

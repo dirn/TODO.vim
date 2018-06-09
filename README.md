@@ -11,7 +11,7 @@ To find all `TODO`s, invoke the command:
 ```
 
 This will search recursively inside the current working directory and open the
-quickfix list.
+quickfix list if any matches are found.
 
 TODO.vim also supports finding `TODO`s that have been assigned:
 
