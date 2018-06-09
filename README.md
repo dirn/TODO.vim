@@ -28,3 +28,10 @@ Alternatively you can set a specific name for a buffer. This will override
 ```
 :let b:todo_name = 'dirn'
 ```
+
+Both of these values can be overridden by passing in a value when calling
+`:TODO`.
+
+```
+:TODO dirn
+```

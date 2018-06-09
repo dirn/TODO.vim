@@ -6,9 +6,15 @@ if exists('g:todo_loaded')
 endif
 let g:todo_loaded = 1
 
-function! s:todo()
+function! s:todo(...)
+    " Args:
+    "     1: An optional name that will be used before either the global or
+    "         buffer-level todo_name variable(s).
+
     " TODO(dirn) is there a better way to check variable precedence?
-    if exists('b:todo_name') && b:todo_name != ''
+    if exists('a:1') && a:1 != ''
+        let l:name = '(' . a:1 . ')'
+    elseif exists('b:todo_name') && b:todo_name != ''
         let l:name = '(' . b:todo_name . ')'
     elseif exists('g:todo_name') && g:todo_name != ''
         let l:name = '(' . g:todo_name . ')'
@@ -23,4 +29,4 @@ function! s:todo()
     cwindow
 endfunction
 
-command! TODO call s:todo()
+command! -nargs=? TODO call s:todo(<f-args>)
