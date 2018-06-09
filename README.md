@@ -21,3 +21,10 @@ TODO.vim also supports finding `TODO`s that have been assigned:
 ```
 
 This will return any `TODO`s that match the pattern `TODO(dirn)`.
+
+Alternatively you can set a specific name for a buffer. This will override
+`g:todo_name`.
+
+```
+:let b:todo_name = 'dirn'
+```

@@ -7,15 +7,13 @@ endif
 let g:todo_loaded = 1
 
 function! s:todo()
-    " TODO(dirn) should this really be done in two separate blocks?
-    if !exists('g:todo_name')
-        let g:todo_name = ''
-    endif
-
-    if g:todo_name == ''
-        let l:name = ''
-    else
+    " TODO(dirn) is there a better way to check variable precedence?
+    if exists('b:todo_name') && b:todo_name != ''
+        let l:name = '(' . b:todo_name . ')'
+    elseif exists('g:todo_name') && g:todo_name != ''
         let l:name = '(' . g:todo_name . ')'
+    else
+        let l:name = ''
     endif
 
     " TODO(dirn): Suppress the error message when no matches are found.
