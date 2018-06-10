@@ -24,7 +24,7 @@ function! s:todo(...)
     endif
 
     " TODO(dirn): Suppress the error message when no matches are found.
-    exec 'lvimgrep! /\C\V\<TODO\>' . l:name . '/ %'
+    execute 'lvimgrep! /\C\V\<TODO\>' . l:name . '/ %'
 
     " TODO: Make this optional.
     lwindow
