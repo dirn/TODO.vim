@@ -1,0 +1,25 @@
+todo.txt    Plugin to add TODOs to the local list.
+
+Find TODOs that have been left throughout your files and add them to your local
+list.
+
+COMMANDS                                        *todo*
+                                                *:TODO*
+:TODO [name]            Find all occurrences of 'TODO' in the current buffer.
+                        You can filter for TODOs assigned to you by providing
+                        [name].
+
+                                                *:TODOBuffer*
+:TODOBuffer [name]      Find all occurrences of 'TODO' in all open buffers. You
+                        can filter for TODOs assigned to you by specifying
+                        [name].
+
+OPTIONS                                         *todo-options*
+                                                *todo_name*
+A name can be set globally or for the current buffer.
+>
+    let g:todo_name = 'global name'
+    let b:todo_name = 'buffer name'
+<
+Setting it for the buffer will override the global value, while passing in
+[name] to a command will override both values.
