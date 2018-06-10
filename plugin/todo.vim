@@ -23,10 +23,10 @@ function! s:todo(...)
     endif
 
     " TODO(dirn): Suppress the error message when no matches are found.
-    exec 'vimgrep! /\C\V\<TODO\>' . l:name . '/ **'
+    exec 'lvimgrep! /\C\V\<TODO\>' . l:name . '/ %'
 
     " TODO: Make this optional.
-    cwindow
+    lwindow
 endfunction
 
 command! -nargs=? TODO call s:todo(<f-args>)
