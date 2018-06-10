@@ -6,14 +6,31 @@ if exists('g:todo_loaded')
 endif
 let g:todo_loaded = 1
 
-function! s:todo(...)
+
+function! s:todobuffers(...)
     " Args:
     "     1: An optional name that will be used before either the global or
     "         buffer-level todo_name variable(s).
 
+    let l:name = s:todoname(exists('a:1') ? a:1 : '')
+
     lclose
 
+    " Clear the local list so that we can append the results from each buffer.
+    lexpr []
+    silent bufdo execute 'lvimgrepadd! /\C\V\<TODO\>' . l:name . '/ %'
+
+    lwindow
+endfunction
+
+function! s:todocurrent(...)
+    " Args:
+    "     1: An optional name that will be used before either the global or
+    "         buffer-level todo_name variable(s).
+
     let l:name = s:todoname(exists('a:1') ? a:1 : '')
+
+    lclose
 
     " TODO(dirn): Suppress the error message when no matches are found.
     execute 'lvimgrep! /\C\V\<TODO\>' . l:name . '/ %'
@@ -41,4 +58,5 @@ function! s:todoname(name)
     return l:name
 endfunction
 
-command! -nargs=? TODO call s:todo(<f-args>)
+command! -nargs=? TODO call s:todocurrent(<f-args>)
+command! -nargs=? TODOBuffers call s:todobuffers(<f-args>)
